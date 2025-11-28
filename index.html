@@ -195,13 +195,12 @@
       font-size: 1rem;
     }
 
-    /* уменьшили сам блок с картинкой */
     .hint-img-wrapper {
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.5);
-      max-width: 260px;   /* ширина картинки */
-      margin: 0 auto;     /* центрируем внутри карточки */
+      max-width: 260px;
+      margin: 0 auto;
     }
 
     .hint-img-wrapper img {
@@ -394,12 +393,14 @@
     const statusLog = document.getElementById("status-log");
     const depositWarning = document.getElementById("deposit-warning");
     const retryBtn = document.getElementById("retry-btn");
+    const hintBlock = document.querySelector(".hint-block"); // блок с картинкой
 
     function resetUI() {
       errorEl.textContent = "";
       statusLog.innerHTML = "";
       statusBox.style.display = "none";
       depositWarning.style.display = "none";
+      // hintBlock специально не трогаем — он нужен до первой нормальной отправки
     }
 
     form.addEventListener("submit", function (e) {
@@ -422,6 +423,11 @@
       if (!id.startsWith("147")) {
         errorEl.textContent = "رقم الحساب لازم يبدأ بـ ١٤٧.";
         return;
+      }
+
+      // здесь всё ок → прячем подсказку с картинкой
+      if (hintBlock) {
+        hintBlock.style.display = "none";
       }
 
       submitBtn.disabled = true;
