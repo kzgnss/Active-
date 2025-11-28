@@ -195,10 +195,13 @@
       font-size: 1rem;
     }
 
+    /* уменьшили сам блок с картинкой */
     .hint-img-wrapper {
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.5);
+      max-width: 260px;   /* ширина картинки */
+      margin: 0 auto;     /* центрируем внутри карточки */
     }
 
     .hint-img-wrapper img {
@@ -343,7 +346,6 @@
             <span>فين تلاقي رقم الحساب في 1xBet:</span>
           </div>
           <div class="hint-img-wrapper">
-            <!-- Файл лежит в папке img/ -->
             <img src="img/1xbet-id-example.png" alt="مثال لمكان رقم الحساب في صفحة 1xBet الشخصية" />
           </div>
         </div>
@@ -382,7 +384,6 @@
   </div>
 
   <script>
-    // السنة في الفوتر
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const form = document.getElementById("connect-form");
@@ -408,25 +409,21 @@
       const raw = (input.value || "").trim();
       const id = raw.replace(/\s+/g, "");
 
-      // Проверка: только цифры
       if (!/^\d+$/.test(id)) {
         errorEl.textContent = "الـ ID لازم يكون أرقام بس (من غير فواصل أو حروف).";
         return;
       }
 
-      // Проверка длины
       if (id.length !== 10) {
         errorEl.textContent = "الـ ID لازم يكون مكوّن من ١٠ أرقام بالظبط.";
         return;
       }
 
-      // Проверка начала с 147
       if (!id.startsWith("147")) {
         errorEl.textContent = "رقم الحساب لازم يبدأ بـ ١٤٧.";
         return;
       }
 
-      // Если всё ок — симуляция проверки
       submitBtn.disabled = true;
       input.disabled = true;
       statusBox.style.display = "block";
@@ -451,7 +448,6 @@
           index++;
           setTimeout(showNextStep, 1200);
         } else {
-          // После "успеха" показываем ошибку депозита
           depositWarning.style.display = "block";
           submitBtn.disabled = false;
           input.disabled = false;
@@ -461,7 +457,6 @@
       showNextStep();
     });
 
-    // "Повторная проверка" просто очищает статусы и даёт снова отправить форму
     if (retryBtn) {
       retryBtn.addEventListener("click", function () {
         statusLog.innerHTML = "";
