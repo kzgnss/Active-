@@ -172,6 +172,41 @@
       transform: none;
     }
 
+    /* Блок-подсказка с картинкой ID */
+    .hint-block {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      font-size: 0.82rem;
+    }
+
+    .hint-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .hint-title span.icon {
+      font-size: 1rem;
+    }
+
+    .hint-img-wrapper {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .hint-img-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     .status-box {
       margin-top: 16px;
       padding: 10px 12px;
@@ -300,6 +335,18 @@
             <span>فحص وربط الحساب</span>
           </button>
         </form>
+
+        <!-- Блок с примером ID -->
+        <div class="hint-block">
+          <div class="hint-title">
+            <span class="icon">📷</span>
+            <span>فين تلاقي رقم الحساب في 1xBet:</span>
+          </div>
+          <div class="hint-img-wrapper">
+            <!-- Положи файл 1xbet-id-example.png рядом с этим HTML -->
+            <img src="1xbet-id-example.png" alt="مثال لمكان رقم الحساب في صفحة 1xBet الشخصية" />
+          </div>
+        </div>
 
         <!-- Статус проверки -->
         <div id="status-box" class="status-box">
